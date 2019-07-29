@@ -1,0 +1,31 @@
+<mat-form-field class="search-form" appearance="outline">
+    <mat-label>Search Bus Stops</mat-label>
+    <input matInput placeholder='Search' [(ngModel)]="searchText">
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+<br>
+
+<ng-template [ngIf]="serviceUp" [ngIfElse]="serviceDown">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+        <ng-container  *ngFor="let stop of busstops; let i=index">
+            <mat-card class="card-picture" *ngIf="showStop(stop)">
+                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+                    <span fxFlex="80%">{{stop.Name}}</span>
+                </mat-card-title>
+                <img mat-card-image [src]="stop.ImageURL">
+                <mat-card-content>
+                <p>
+                    Amount Raised till now <b>{{stop.Donations | calculate}}</b><br/>
+                    Amount to be raised <b>{{targetAmount}}</b>
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="donate(i)">Donate</button>
+                </mat-card-actions>
+            </mat-card>
+        </ng-container>
+    </div>
+</ng-template>
+<ng-template #serviceDown>
+    <app-error></app-error>
+</ng-template>

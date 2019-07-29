@@ -1,0 +1,25 @@
+.form {
+    min-width: 500px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.container{
+    margin-left: 5%;
+}
+  
+.element-full-width {
+    width: 100%;
+}
+
+.card-width{
+    width: 60%;
+}
+
+.expiry-width{
+    width: 25%;
+}
+
+.expiry-width{
+    width: 20%;
+}
